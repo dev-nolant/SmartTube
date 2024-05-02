@@ -848,7 +848,7 @@ public final class MediaCodecUtil {
         // Prefer generic decoders over ones provided by the device.
         return -1;
       }
-      if (Util.SDK_INT < 26 && name.equals("OMX.MTK.AUDIO.DECODER.RAW")) {
+      if (Util.SDK_INT < 26 && "OMX.MTK.AUDIO.DECODER.RAW".equals(name)) {
         // This decoder may modify the audio, so any other compatible decoders take precedence. See
         // [Internal: b/62337687].
         return 1;

@@ -126,7 +126,7 @@ public class TrackSelectorUtil {
             return false;
         }
 
-        return codec.equals(CODEC_PREFIX_VP9_HDR) || Helpers.endsWith(codec, CODEC_SUFFIX_AV1_HDR, CODEC_SUFFIX_AV1_HDR2, HDR_PROFILE_ENDING);
+        return CODEC_PREFIX_VP9_HDR.equals(codec) || Helpers.endsWith(codec, CODEC_SUFFIX_AV1_HDR, CODEC_SUFFIX_AV1_HDR2, HDR_PROFILE_ENDING);
     }
 
     public static String extractCodec(Format format) {

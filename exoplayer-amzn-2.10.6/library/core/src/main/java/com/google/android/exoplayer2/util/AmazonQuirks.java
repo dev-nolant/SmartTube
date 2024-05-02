@@ -112,7 +112,7 @@ public final class AmazonQuirks {
      private static void loadForcedLogSettings() {
          String setting = getSystemProperty("com.amazon.exoplayer.forcelog");
          // this happens on release builds, and without disabling setenforce
-         if (setting == null || setting.equals("")) {
+         if (setting == null || "".equals(setting)) {
              return;
          }
          try {

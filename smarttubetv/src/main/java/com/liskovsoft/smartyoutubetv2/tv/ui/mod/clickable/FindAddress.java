@@ -291,7 +291,7 @@ class FindAddress {
                 case 3:
                     return suffix.equals(num % 100 == 13 ? "th" : "rd");
                 default:
-                    return suffix.equals("th");
+                    return "th".equals(suffix);
             }
         }
         return true;
@@ -458,7 +458,7 @@ class FindAddress {
                 // We can now attempt to match a state.
                 MatchResult stateMatch = matchState(content, it);
                 if (stateMatch != null) {
-                    if (lastWord.equals("et") && stateMatch.group(0).equals("al")) {
+                    if (lastWord.equals("et") && "al".equals(stateMatch.group(0))) {
                         // Reject "et al" as a false postitive.
                         it = stateMatch.end();
                         break;
