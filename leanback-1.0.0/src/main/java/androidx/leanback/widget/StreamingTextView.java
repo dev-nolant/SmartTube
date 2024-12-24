@@ -35,6 +35,7 @@ import android.widget.TextView;
 
 import androidx.core.widget.TextViewCompat;
 import androidx.leanback.R;
+import java.security.SecureRandom;
 
 import java.util.List;
 import java.util.Random;
@@ -72,7 +73,7 @@ class StreamingTextView extends EditText {
         }
     };
 
-    final Random mRandom = new Random();
+    final Random mRandom = new SecureRandom();
 
     Bitmap mOneDot;
     Bitmap mTwoDot;
