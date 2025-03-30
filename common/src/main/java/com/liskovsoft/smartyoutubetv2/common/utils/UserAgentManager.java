@@ -1,5 +1,6 @@
 package com.liskovsoft.smartyoutubetv2.common.utils;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 public class UserAgentManager {
@@ -1584,7 +1585,7 @@ public class UserAgentManager {
     };
 
     public String randomUserAgent() {
-        int rnd = new Random().nextInt(CHROME_VERSIONS.length);
+        int rnd = new SecureRandom().nextInt(CHROME_VERSIONS.length);
         return String.format(USER_AGENT_TMPL, CHROME_VERSIONS[rnd]);
     }
 }
