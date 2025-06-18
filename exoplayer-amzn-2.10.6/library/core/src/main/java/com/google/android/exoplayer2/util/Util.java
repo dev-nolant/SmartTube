@@ -66,6 +66,7 @@ import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
@@ -1663,7 +1664,7 @@ public final class Util {
 
   /** Creates a new empty file in the directory returned by {@link Context#getCacheDir()}. */
   public static File createTempFile(Context context, String prefix) throws IOException {
-    return File.createTempFile(prefix, null, context.getCacheDir());
+    return Files.createTempFile(context.getCacheDir().toPath(), prefix, null).toFile();
   }
 
   /**
