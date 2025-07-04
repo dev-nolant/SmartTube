@@ -279,7 +279,7 @@ public final class SimpleCache implements Cache {
     this.contentIndex = contentIndex;
     this.fileIndex = fileIndex;
     listeners = new HashMap<>();
-    random = new Random();
+    random = new SecureRandom();
     touchCacheSpans = evictor.requiresCacheSpanTouches();
     uid = UID_UNSET;
 
