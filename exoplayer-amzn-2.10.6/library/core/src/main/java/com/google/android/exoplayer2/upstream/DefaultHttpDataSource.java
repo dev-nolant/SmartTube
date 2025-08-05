@@ -26,6 +26,8 @@ import com.google.android.exoplayer2.util.Log;
 import com.google.android.exoplayer2.util.Predicate;
 import com.google.android.exoplayer2.util.Util;
 import com.liskovsoft.sharedutils.helpers.NetworkHelpers;
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 
 import java.io.EOFException;
 import java.io.IOException;
@@ -436,7 +438,7 @@ public class DefaultHttpDataSource extends BaseDataSource implements HttpDataSou
    * Establishes a connection, following redirects to do so where permitted.
    */
   private HttpURLConnection makeConnection(DataSpec dataSpec) throws IOException {
-    URL url = new URL(dataSpec.uri.toString());
+    URL url = Urls.create(dataSpec.uri.toString(), Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
     @HttpMethod int httpMethod = dataSpec.httpMethod;
     byte[] httpBody = dataSpec.httpBody;
     long position = dataSpec.position;
@@ -581,7 +583,7 @@ public class DefaultHttpDataSource extends BaseDataSource implements HttpDataSou
       throw new ProtocolException("Null location redirect");
     }
     // Form the new url.
-    URL url = new URL(originalUrl, location);
+    URL url = Urls.create(originalUrl, location, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
     // Check that the protocol of the new url is supported.
     String protocol = url.getProtocol();
     if (!"https".equals(protocol) && !"http".equals(protocol)) {
